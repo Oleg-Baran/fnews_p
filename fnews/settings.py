@@ -30,7 +30,7 @@ SECRET_KEY = 'wpzl2ir(%jzj6-2azutqr-2odf-zt=4u0ywk5u46(n61^gaot!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['18.198.47.32', 'localhost']
 
 
 # Application definition
@@ -92,8 +92,12 @@ WSGI_APPLICATION = 'fnews.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'fnews',
+	'USER': 'fnews',
+	'PASSWORD': 'Pass@123',
+	'HOST': 'localhost',
+	'PORT': '',
     }
 }
 
