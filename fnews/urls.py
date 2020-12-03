@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include #Add some apps urls
-
+from django.conf import settings
+from django.conf.urls.static import static
 from graphene_django.views import GraphQLView
 from blog import schema
 
@@ -27,3 +28,4 @@ urlpatterns = [
     path('graphql/', GraphQLView.as_view(graphiql=True)),  #APIcalls
     path('', include('social_django.urls', namespace='social')), #For autintification users
 ]
+if settings.DEBUG: urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

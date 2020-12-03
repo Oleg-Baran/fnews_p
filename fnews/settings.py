@@ -30,7 +30,7 @@ SECRET_KEY = 'wpzl2ir(%jzj6-2azutqr-2odf-zt=4u0ywk5u46(n61^gaot!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['18.198.47.32', 'localhost', '*']
 
 
 # Application definition
@@ -92,8 +92,12 @@ WSGI_APPLICATION = 'fnews.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'fnews',
+	'USER': 'fnews',
+	'PASSWORD': 'Pass@123',
+	'HOST': 'localhost',
+	'PORT': '',
     }
 }
 
@@ -138,9 +142,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, "static")
-
+#staticfiles
+ 
 SOCIAL_AUTH_GITHUB_KEY = 'ab19faac9e6b1a6f6829'
 SOCIAL_AUTH_GITHUB_SECRET = '7389121629d24e2edd66021937a17cda8d2df098'
+
+STATIC_DIR = os.path.join(BASE_DIR, 'static') 
+STATICFILES_DIRS = [STATIC_DIR]
+# for collectstatic
+STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
